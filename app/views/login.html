@@ -9,7 +9,7 @@
       <input class="form-field" type="text" name="admin-username" ng-model="adminCreds.username">
       <p class="frm-label">Password:</p>
       <input class="form-field" type="text" name="admin-password" ng-model="adminCreds.password">
-      <button name="login-admin-submit">Login</button>
+      <button name="login-admin-submit" ng-click="adminLogin(adminCreds)">Login</button>
     </div>
     <p class="bot-details">Don't have an account? Learn more how raffle app can improve your next event</p>
   </div>

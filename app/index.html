@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="rafflePrizeApp">
+  <body ng-app="rafflePrizeApp" ng-controller="ApplicationCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -48,19 +48,22 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/homemain.js"></script>
-        <!-- // <script src="scripts/services/auth_events.js"></script>
-        // <script src="scripts/services/authservice.js"></script>
-        // <script src="scripts/services/session.js"></script>
-        // <script src="scripts/services/userroles.js"></script> -->
-        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/services/auth_events.js"></script>
+        <script src="scripts/services/authservice.js"></script>
+        <script src="scripts/services/session.js"></script>
         <script src="scripts/services/signup.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <!-- // <script src="scripts/services/user_roles.js"></script> -->
+        <script src="scripts/controllers/application.js"></script>
         <!-- endbuild -->
 </body>
 </html>

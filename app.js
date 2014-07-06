@@ -20,7 +20,7 @@ app.listen(12000);
 
 app.post('/signup.create', user.createAdmin)
 app.post('/signup.validate', user.validateUsername)
-
+app.post('/login.admin', user.adminLogin)
 
 
 db

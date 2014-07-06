@@ -21,3 +21,9 @@ exports.validateUsername =  function(req, res) {
     }
   })
 }
+
+exports.adminLogin = function(req, res) {
+  var adminCred = req.body;
+  console.log("Admin Login Validate: " + req.body)
+  res.send({})
+}
