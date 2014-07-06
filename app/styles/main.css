@@ -1,0 +1,318 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*  Styles used for app
+    App styles written by Paul Chatterton */
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem; /* =14px */
+  font-family: sans-serif;
+  height: 100%;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* header styles */
+.header-wrapper {
+  background: #293642;
+  background-image: url('images/bg02.png');
+  height: 70px;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.header-container {
+  width: 1000px;
+  color: #FDFDFD;
+  margin: auto auto;
+}
+
+.header-wrapper h1{
+  font-size: 3.4rem;  /* = px */
+}
+
+.logo-title {
+  width: 500px;
+  float: left;
+  padding-top: 10px;
+}
+
+.right-nav {
+  width: 500px;
+  float: right;
+  position: relative;
+  padding-top: 15px;
+}
+
+.right-nav:after {
+  clear:both;
+}
+
+.right-nav .nav-pills {
+  position: absolute;
+  right: 0px;
+}
+
+.right-nav .nav-pills > li > a {
+  color: #FDFDFD;
+  background-color: inherit;
+  padding-bottom: 5px;
+}
+
+.right-nav .nav-pills > li > a:hover {
+  background-color: #415569;
+}
+
+.right-nav .nav-pills > li.active {
+  border-bottom: solid 2px white;
+}
+
+.right-nav li{
+  display: inline-block;
+  margin: 0px 20px 0px 20px;
+}
+
+.main-content-wrapper {
+  width: 100%;
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 18px 20px -20px #1F3627;
+  -moz-box-shadow: inset 0 18px 20px -20px #1F3627;
+  box-shadow: inset 0 18px 20px -20px #1F3627;
+  margin-top: 5px;
+  background-image: url('images/bg02.png');
+}
+
+.main-content-container {
+  width: 1000px;
+  min-height: 500px;
+  margin: 0 auto 0 auto;
+}
+
+.main-content-container div.ng-enter            {
+	    -webkit-animation:fadein 1.0s both ease;
+		-moz-animation:fadein 1.0s both ease;
+		animation:fadein 1.0s both ease;
+}
+
+.main-content-container div.ng-leave            {
+    -webkit-animation:fadeout 0.2 both ease;
+	-moz-animation:fadeout 0.2 both ease;
+	animation:fadeout 0.2 both ease;
+}
+
+.login-signup-wrapper {
+  position: relative;
+}
+
+.main-content-container .nav-pills {
+  margin-left: 720px;
+}
+
+.main-content-container .nav li{
+  display: inline-block;
+  margin: 0px 20px 0px 20px;
+}
+
+.main-content-container .nav > li > a {
+  padding: 10px 20px;
+}
+
+.home-content-container {
+  width: 950px;
+  height: 500px;
+  margin: 10px auto 0px auto;
+  background-color: white;
+  padding: 2px;
+}
+
+.login-signup-wrapper {
+  padding-top: 10px;
+}
+
+.signup-btn a{
+  background-color: #A80816;
+  color: white;
+}
+
+.signup-btn a:hover{
+  background-color: #A80816;
+}
+
+/*Login forms*/
+.home-login-container {
+  margin-top: 50px;
+}
+
+.login-admin-container {
+  width: 350px;
+  height: 400px;
+  background-color: white;
+  float: left;
+  margin-left: 100px;
+  padding: 20px;
+}
+
+.login-event-container {
+  width: 350px;
+  height: 400px;
+  background-color: white;
+  float: right;
+  margin-right: 100px;
+  padding: 20px;
+}
+
+.home-login-container h2 {
+  font-size: 2.0rem;
+  border-bottom: solid thin #81A7CF;
+  color: #81A7CF;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+.home-login-container .details {
+  font-style: italic;
+  margin-bottom: 15px;
+  color: #293642;
+}
+
+.home-login-container .frm-label {
+  font-size: 1.8rem;
+  color: #293642;
+  margin-top: 10px;
+}
+
+.form-field {
+   border: 1px solid #c9b7a2;
+   background: #fff;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   color: #c9b7a2;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+   padding:2px;
+   margin-top: 5px;
+   margin-bottom:20px;
+   width:280px;
+}
+
+.home-login-container .bot-details {
+  margin-top: 50px;
+}
+
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}​
+
+/* Opera */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}​
+
+/* slide in from the right */
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Firefox */
+@-moz-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}​
+
+/* Opera */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}​

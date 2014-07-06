@@ -1,0 +1,29 @@
+
+<div class="home-login-container">
+  <!-- Admin login -->
+  <div class="login-admin-container">
+    <h2>Admin Login</h2>
+    <p class="details">If you are the admin of a raffle event, login here!</p>
+    <div class="login-admin-frm">
+      <p class="frm-label">Username:</p>
+      <input class="form-field" type="text" name="admin-username" ng-model="adminCreds.username">
+      <p class="frm-label">Password:</p>
+      <input class="form-field" type="text" name="admin-password" ng-model="adminCreds.password">
+      <button name="login-admin-submit">Login</button>
+    </div>
+    <p class="bot-details">Don't have an account? Learn more how raffle app can improve your next event</p>
+  </div>
+
+  <!-- Event user login -->
+  <div class="login-event-container">
+    <h2>Enter Event</h2>
+    <p class="details">Ready to submit your raffle selection? Fill out the information below!</p>
+    <div class="login-event-frm">
+      <p class="frm-label">Event ID:</p>
+      <input class="form-field" type="text" name="admin-username"><span class="this-moreinfo">what's this?</span>
+      <p class="frm-label">User ID:</p>
+      <input class="form-field" type="text" name="admin-password"><span class="this-moreinfo">what's this?</span>
+      <input class="submit-button" type="submit" value="Submit">
+    </div>
+  </div>
+</div>
