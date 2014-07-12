@@ -1,0 +1,18 @@
+<div class="admin-main">
+
+  <div class="admin-top-menu">
+    <div class="admin-name-email">
+      {{firstName}} {{lastName}} ({{username}})
+    </div>
+    <div class="admin-menu">
+      <ul>
+        <li class="events-border" ui-sref="admin.event"><a href="#">Events</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="admin-content-wrapper" ui-view></div>
+</div> <!--.admin-mian-->

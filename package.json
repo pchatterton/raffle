@@ -4,7 +4,8 @@
   "dependencies": {
     "sequelize": "*",
     "mysql": "*",
-    "express": "*"},
+    "express": "*",
+    "express-session":"1.4.0"},
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",

@@ -13,7 +13,7 @@
     <input class="form-field" type="text" name="admin-password" ng-model="newAdmin.password">
     <p class="frm-label">Repeat Password:</p>
     <input class="form-field" type="text" name="admin-password-rpt" ng-model="pwRepeat">
-
+    {{formMessage}}
     <input class="submit-button" type="submit" value="Submit" ng-click="createAdmin(newAdmin)">
   </div>
 </div>

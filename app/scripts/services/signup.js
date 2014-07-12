@@ -2,7 +2,7 @@
 
 var app = angular.module('rafflePrizeApp');
 
-app.service('Signup', function Signup($http, $q) {
+app.service('Signup', function Signup($http, $q, Authentication) {
 
     this.validateUsername = function(username) {
       var deferred = $q.defer();
@@ -13,11 +13,6 @@ app.service('Signup', function Signup($http, $q) {
             username: username
           }
         }).success(function(res) {
-            if(res.validate) {
-              res.response = "Username works!";
-            } else {
-              res.response = "Sorry, username is already taken.";
-            }
             deferred.resolve(res);
         })
       return deferred.promise;
@@ -34,11 +29,10 @@ app.service('Signup', function Signup($http, $q) {
           username: admin.username,
           password: admin.password
         }
-      }).success(function(data) {
-            deferred.resolve(data);
+      }).success(function(res) {
+        console.log(res)
+            deferred.resolve(res);
       });
     return deferred.promise;
   }
   });
-
-//append .error function

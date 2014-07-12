@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="rafflePrizeApp">
+  <body ng-app="rafflePrizeApp" ng-controller="ApplicationCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div ng-include="'views/header.tpl.html'"></div>
-    <div class="main-container" ng-include="'views/main.html'" ng-controller = "homeMainCtrl"></div>
+    <div class="main-container" ng-include="'views/main.html'" ng-controller = "selectionCtrl"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -50,25 +50,20 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-    <!-- // <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    // <script src="bower_components/angular-animate/angular-animate.js"></script>
-    // <script src="bower_components/angular-cookies/angular-cookies.js"></script> -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/homemain.js"></script>
+        <script src="scripts/services/auth_events.js"></script>
+        <script src="scripts/services/authservice.js"></script>
+        <script src="scripts/services/session.js"></script>
         <script src="scripts/services/signup.js"></script>
         <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/selection.js"></script>
-        <script src="scripts/services/login.js"></script>
-        <script src="scripts/services/authentication.js"></script>
-        <script src="scripts/controllers/admin.js"></script>
-        <script src="scripts/controllers/header.js"></script>
+        <!-- // <script src="scripts/services/user_roles.js"></script> -->
+        <script src="scripts/controllers/application.js"></script>
         <!-- endbuild -->
 </body>
 </html>

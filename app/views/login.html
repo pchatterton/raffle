@@ -1,4 +1,3 @@
-
 <div class="home-login-container">
   <!-- Admin login -->
   <div class="login-admin-container">
@@ -10,6 +9,7 @@
       <p class="frm-label">Password:</p>
       <input class="form-field" type="text" name="admin-password" ng-model="adminCreds.password">
       <button name="login-admin-submit" ng-click="adminLogin(adminCreds)">Login</button>
+      <p>{{adminFormMessage}}</p>
     </div>
     <p class="bot-details">Don't have an account? Learn more how raffle app can improve your next event</p>
   </div>

@@ -61,6 +61,10 @@ body {
   height: 100%;
 }
 
+.clear {
+	clear: both;
+}
+
 .main-container {
   width: 100%;
   height: 100%;
@@ -154,10 +158,6 @@ body {
 	animation:fadeout 0.2 both ease;
 }
 
-.login-signup-wrapper {
-  position: relative;
-}
-
 .main-content-container .nav-pills {
   margin-left: 720px;
 }
@@ -179,8 +179,9 @@ body {
   padding: 2px;
 }
 
-.login-signup-wrapper {
+.top-section {
   padding-top: 10px;
+	position: relative;
 }
 
 .signup-btn a{
@@ -253,6 +254,35 @@ body {
 
 .home-login-container .bot-details {
   margin-top: 50px;
+}
+
+/*ADMIN PAGE STYLES */
+.admin-main {
+	height: 550px;
+}
+
+.admin-top-menu .admin-name-email {
+	float: left;
+}
+
+.admin-top-menu .admin-menu {
+	float: right;
+}
+
+.admin-menu li{
+	display: inline-block;
+	padding: 0 10px 0 12px;
+	border-left: solid thin #293642;
+}
+
+li.events-border {
+	border-left: none;
+}
+
+.admin-content-wrapper {
+	background-color: white;
+	margin-top: 5px;
+	min-height: 550px;
 }
 
 /* ANIMATIONS

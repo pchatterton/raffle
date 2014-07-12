@@ -1,0 +1,23 @@
+<div class="event-wrapper">
+  <div class="event-left-column">
+    <div class="event-selection">
+      <select ng-model="myEvents" ng-options="event.name for event in events">
+        <option value="">My events</option>
+      </select>
+      <p>Create a new event</p>
+    </div>
+    <div class="event-menu">
+      <ul>
+        <li>Summary</li>
+        <li>Prizes</li>
+        <li>Registrants</li>
+      </ul>
+    </div>
+  </div>
+  <div class="event-main-content">
+    <div ui-view></div>
+    <div class="noEvent">
+      NO EVENT
+    </div>
+  </div>
+</div>

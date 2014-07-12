@@ -25,7 +25,7 @@
 
     <!-- Add your site or application content here -->
     <div ng-include="'views/header.tpl.html'"></div>
-    <div class="main-container" ng-include="'views/main.html'" ng-controller = "homeMainCtrl"></div>
+    <div class="main-container" ng-controller = "homeMainCtrl"><h1>Admin</h1></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -50,13 +50,8 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-    <!-- // <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    // <script src="bower_components/angular-animate/angular-animate.js"></script>
-    // <script src="bower_components/angular-cookies/angular-cookies.js"></script> -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -66,9 +61,6 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/selection.js"></script>
         <script src="scripts/services/login.js"></script>
-        <script src="scripts/services/authentication.js"></script>
-        <script src="scripts/controllers/admin.js"></script>
-        <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>
