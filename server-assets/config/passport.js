@@ -28,7 +28,7 @@ passport.use('local-signup', new LocalStrategy(
     })
   }
 ));
-  passport.use('local-login', new LocalStrategy(
+  passport.use('local-adminLogin', new LocalStrategy(
   function(username, password, done) {
     process.nextTick(function() {
       db.Admin.find({ where: { username: username }}).success(function(user) {

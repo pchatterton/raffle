@@ -1,0 +1,19 @@
+<div class="noEvent" ng-hide="eventForm">
+  <h1>You have no events created yet.</h1>
+  <button name="createEvent" ng-click="showForm()">Create Event</button>
+</div>
+<div class="create-event-wrapper" ng-show="eventForm">
+  <h2>Create a new Event</h2>
+  <div class="create-event-frm">
+    <p class="frm-label">Event Name:</p>
+    <input class="form-field" type="text" name="admin-firstName" ng-model="newEvent.eventName">
+    <p class="frm-label">Description:</p>
+    <input class="form-field" type="text" name="admin-lastName" ng-model="newEvent.Description">
+    <p class="frm-label">Location:</p>
+    <input class="form-field" type="text" name="admin-username" ng-model="newEvent.Location">
+    <p class="frm-label">Number of Votes (per registrant):</p>
+    <input class="form-field" type="text" name="admin-password" ng-model="newEvent.startNumVotes">
+    <p>{{eventFrmMessage}}</p>
+    <button name="create-event-submit" ng-click="createEvent(newEvent)">Submit</button>
+  </div>
+</div>

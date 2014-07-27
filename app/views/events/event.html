@@ -1,23 +1,27 @@
 <div class="event-wrapper">
   <div class="event-left-column">
-    <div class="event-selection">
-      <select ng-model="myEvents" ng-options="event.name for event in events">
-        <option value="">My events</option>
-      </select>
-      <p>Create a new event</p>
+    <div class="event-left-column-top">
+      <div class="dropdown" ng-show="showEvents">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+          {{myEvents.eventName}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation" ng-repeat="event in eventNames"><a ng-click="updateEventInfo(event)">{{event.eventName}}</a></li>
+        </ul>
+      </div>
+      <p ui-sref="admin.event.createEvent"><a>New event...</a></p>
     </div>
     <div class="event-menu">
-      <ul>
-        <li>Summary</li>
-        <li>Prizes</li>
-        <li>Registrants</li>
-      </ul>
+      <div class="btn-group-vertical">
+        <button type="button" class="btn btn-default eventMenuFocus" ui-sref="admin.event.summary">Summary</button>
+        <button type="button" class="btn btn-default" ui-sref="admin.event.prizes">Prizes</button>
+        <button type="button" class="btn btn-default">Registrants</button>
+      </div>
     </div>
-  </div>
+  </div><!--.event-left-column-->
   <div class="event-main-content">
     <div ui-view></div>
-    <div class="noEvent">
-      NO EVENT
-    </div>
-  </div>
-</div>
+  </div><!-- .event-main-content-->
+  <div class="clear"></div>
+</div> <!--.event-wrapper-->

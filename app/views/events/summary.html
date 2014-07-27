@@ -1,0 +1,28 @@
+<div class="event-summary-header">
+  <div class="event-summary-details">
+    <h2>{{myEvents.eventName}}</h2>
+    <h3>{{myEvents.Description}}</h3>
+    <p>{{myEvents.Location}}</p>
+  </div>
+  <div class="event-summary-status">
+    <div class="event-status-text">Status: </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-class="myEvents.active === 1 ? 'btnEnabledOn' : 'btnDisabled' " ng-click="enableEvent()">Enabled</button>
+      <button type="button" class="btn btn-default" ng-class="myEvents.active === 0 ? 'btnEnabledOff' : 'btnDisabled'" ng-click="disableEvent()">Disabled</button>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
+<div class="event-summary-sections">
+  <div class="event-summary-settings section">
+    <h2>Settings</h2>
+    <p>Start Num. Votes: {{myEvents.startNumVotes}}</p>
+  </div>
+  <div class="event-summary-registrants section">
+    <h2>Registrants</h2>
+  </div>
+  <div class="event-summary-stats section">
+    <h2>Stats</h2>
+  </div>
+  <div class="clear"></div>
+</div>

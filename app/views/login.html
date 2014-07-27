@@ -8,8 +8,8 @@
       <input class="form-field" type="text" name="admin-username" ng-model="adminCreds.username">
       <p class="frm-label">Password:</p>
       <input class="form-field" type="text" name="admin-password" ng-model="adminCreds.password">
+      <p class="frm-error-message">{{adminFormMessage}}</p>
       <button name="login-admin-submit" ng-click="adminLogin(adminCreds)">Login</button>
-      <p>{{adminFormMessage}}</p>
     </div>
     <p class="bot-details">Don't have an account? Learn more how raffle app can improve your next event</p>
   </div>
@@ -19,11 +19,14 @@
     <h2>Enter Event</h2>
     <p class="details">Ready to submit your raffle selection? Fill out the information below!</p>
     <div class="login-event-frm">
-      <p class="frm-label">Event ID:</p>
-      <input class="form-field" type="text" name="admin-username"><span class="this-moreinfo">what's this?</span>
       <p class="frm-label">User ID:</p>
-      <input class="form-field" type="text" name="admin-password"><span class="this-moreinfo">what's this?</span>
-      <input class="submit-button" type="submit" value="Submit">
+      <input class="form-field" type="text" name="user-password" ng-model="userCreds.userID">
+      <!-- <span class="this-moreinfo">what's this?</span> -->
+      <p class="frm-label">Event ID:</p>
+      <input class="form-field" type="text" name="user-username" ng-model="userCreds.eventID">
+        <!-- <span class="this-moreinfo">what's this?</span> -->
+      <p class="frm-error-message">{{userFormMessage}}</p>
+      <button name="login-admin-submit" ng-click="userLogin(userCreds)">Login</button>
     </div>
   </div>
 </div>

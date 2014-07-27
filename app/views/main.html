@@ -1,10 +1,10 @@
+<div ng-include="'views/header.tpl.html'"></div>
 <div class="main-content-wrapper">
   <div class="main-content-container">
     <div class="top-section">
-      <ul class="nav nav-pills">
-        <li class="active login-btn" ui-sref="login" ng-hide="loggedIn"><a href="#">Login</a></li>
-        <li class="signup-btn"  ui-sref="signup" ng-hide="loggedIn"><a href="#">Sign up</a></li>
-        <li class="logout-btn" ng-show="loggedIn" ng-click="logout()"><a href="#">Logout</a></li>
+      <ul class="nav nav-pills" ng-hide="loggedIn">
+        <li class="active login-btn" ui-sref="login" ng-hide="loginBtnVis"><a href="#">Login</a></li>
+        <li class="signup-btn"  ui-sref="signup" ng-hide="signupBtnVis"><a href="#">Sign up</a></li>
       </ul>
     </div>
     <div ui-view></div>

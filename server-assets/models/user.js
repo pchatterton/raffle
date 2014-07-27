@@ -1,11 +1,14 @@
+var Sequelize  = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
-  var Admin = sequelize.define('Admin', {
+  var User = sequelize.define('User', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.STRING,
+    email: DataTypes.STRING,
+    votesRemain: DataTypes.INTEGER,
+    EventID: DataTypes.INTEGER,
+    role: {type: Sequelize.STRING, defaultValue: 'user'}
   })
 
-  return Admin
+  return User
 }

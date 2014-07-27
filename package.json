@@ -2,10 +2,14 @@
   "name": "raffleprizeapp",
   "version": "0.0.0",
   "dependencies": {
-    "sequelize": "*",
-    "mysql": "*",
+    "connect-busboy": "0.0.1",
     "express": "*",
-    "express-session":"1.4.0"},
+    "express-session": "1.4.0",
+    "mkdirp": "^0.5.0",
+    "multer": "^0.1.2",
+    "mysql": "*",
+    "sequelize": "*"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",

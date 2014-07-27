@@ -1,15 +1,24 @@
-<div class="header-wrapper" ng-controller="HeaderCtrl">
+<div class="header-wrapper">
   <div class="header-container">
     <div class="logo-title">
       <h1>Raffle and Price App</h1>
     </div>
+    <div class="user-loggedin-info" ng-show="userShow">
+      <p>UserID</p>
+      <p class='votes-remaining'>Votes Left:</p>
+    </div>
     <div class="right-nav">
-      <ul class="nav nav-pills">
-        <li class="active"><a href="/">Home</a></li>
+      <ul ng-hide="loggedIn">
+        <li class="active" ng-click="clickHome()"><a href="/">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
+      <ul ng-show="loggedIn">
+        <li class="active"><a href="/">Home</a></li>
+        <li ng-click="logout()">Logout</li>
+      </ul>
     </div>
+    <div class="clear"></div>
   </div>
 </div>

@@ -24,7 +24,6 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-include="'views/header.tpl.html'"></div>
     <div class="main-container" ng-include="'views/main.html'" ng-controller = "homeMainCtrl"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -45,16 +44,24 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- // <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/ng-file-upload-shim/angular-file-upload-shim.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
+    <!-- // <script src="bower_components/jquery/dist/jquery.js"></script>
+    // <script src="bower_components/ng-file-upload-shim/angular-file-upload-shim.js"></script>
+    // <script src="bower_components/angular/angular.js"></script>
+    // <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+    // <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    // <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     // <script src="bower_components/angular-animate/angular-animate.js"></script>
     // <script src="bower_components/angular-cookies/angular-cookies.js"></script> -->
 
@@ -69,6 +76,14 @@
         <script src="scripts/services/authentication.js"></script>
         <script src="scripts/controllers/admin.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/event.js"></script>
+        <script src="scripts/services/event.js"></script>
+        <script src="scripts/controllers/eventsummary.js"></script>
+        <script src="scripts/controllers/eventcreate.js"></script>
+        <script src="scripts/controllers/adminprizes.js"></script>
+        <script src="scripts/services/prizes.js"></script>
+        <script src="scripts/controllers/userevent.js"></script>
+        <script src="scripts/services/userevent.js"></script>
         <!-- endbuild -->
 </body>
 </html>

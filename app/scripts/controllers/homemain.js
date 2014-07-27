@@ -2,24 +2,64 @@
 
 var app = angular.module('rafflePrizeApp');
 
-app.controller('homeMainCtrl', function ($scope, $cookieStore, Authentication, $location) {
+app.controller('homeMainCtrl', function ($scope, $cookieStore, Authentication, $location, $state) {
 
-    $scope.$watch(function () { return Authentication.verifyLoggedIn(); },
-      function (value) {
-        $scope.loggedIn = value;
+    $scope.loginBtnVis = false;
+    $scope.signupBtnVis = false;
+
+    console.log('home' + $cookieStore.get('loggedIn'))
+
+
+
+    // $scope.$watch(function () { return Authentication.verifyLoggedIn(); },
+    //   function (value) {
+    //     $scope.loginBtnVis = value;
+    //     $scope.signupBtnVis = value;
+    //   }
+    // );
+
+    $scope.$on('updateMainBtn', function(event, change) {
+      console.log('change: ' + change)
+      if(change === 'login') {
+        $scope.loginBtnVis = true;
+        $scope.signupBtnVis = false;
+      } else if(change === 'signup') {
+        $scope.loginBtnVis = false;
+        $scope.signupBtnVis = true;
       }
-    );
+    });
 
-    $scope.logout = function() {
-      var test = $cookieStore.get('loggedIn')
-      Authentication.logout();
-      $location.path('/');
+  $scope.clickHome = function() {
+    $scope.loginBtnVis = false;
+    $scope.signupBtnVis = false;
+  }
+
+  $scope.$on('$locationChangeStart', function(event, next, current) {
+    console.log('$locationChangeStart')
+    if(next.indexOf('admin') !== -1) {
+      console.log('admin in url')
+      if(!$cookieStore.get('loggedIn')) {
+        console.log('ugh: ' + $cookieStore.get('loggedIn'))
+        $state.go('login');
+      }
     }
-  });
+
+  })
+
+  $scope.logout = function() {
+    Authentication.logout();
+    $scope.loginBtnVis = false;
+    $scope.signupBtnVis = false;
+  }
+
+});
+
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
+
+
 
 // Main stateProviders =========================================================
     $stateProvider
@@ -41,20 +81,36 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: '/admin',
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl',
-        resolve: {
-          verifyAdmin: function(Authentication) {
-            Authentication.verifyAdmin()
-          }
-        }
+      })
+      .state('event', {
+        url: '/userEvent',
+        templateUrl: 'views/event.html',
+        controller: 'userEventCtrl',
       })
 // Admin stateProvider =========================================================
       .state('admin.event', {
         url: '/event',
         templateUrl: 'views/events/event.html',
-          verifyAdmin: function(Authentication) {
-            Authentication.verifyAdmin()
-          }
+        controller: 'EventCtrl',
       })
+
+// Event stateProviders ========================================================
+      .state('admin.event.summary', {
+        url: '/summary',
+        templateUrl: 'views/events/summary.html',
+        controller: 'EventsummaryCtrl',
+      })
+      .state('admin.event.createEvent', {
+        url: '/createEvent',
+        templateUrl: 'views/events/createEvent.html',
+        controller: 'EventcreateCtrl',
+      })
+      .state('admin.event.prizes', {
+        url: '/prizes',
+        templateUrl: 'views/events/prizes.html',
+        controller: 'AdminprizesCtrl',
+      })
+// End of app.config ===========================================================
   });
 
     app.run(function($state){});
