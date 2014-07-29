@@ -38,10 +38,11 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
           method: 'GET',
           url: 'http://localhost:12000/getVotes/' + userId
         }).success(function(res) {
-            console.log('getUserVOtes: ' + JSON.stringify(res))
+          console.log('getUserVotes: ' + JSON.stringify(res));
             userVoteData = res;
             userEventService.combinePrizeVotes();
-            userEventService.changesMade(res, "add");
+            userEventService.countPrizeVotes(res);
+            userEventService.changesMadeInit(res);
               deferred.resolve(res);
             }).
               error(function(res) {
@@ -50,20 +51,24 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
       return deferred.promise
     }
 
+    userEventService.countPrizeVotes = function(voteData) {
+      var count = 0;
+      if(!(voteData.length === 0)) {
+        for(var i = 0; i<voteData.length; i++) {
+          count += voteData[i].votes;
+        }
+        votesUsed = count;
+      }
+    }
+
     userEventService.combinePrizeVotes = function () {
       for (var key in userEventData) {
         userEventData[key].votes = 0;
       }
       for(var i=0; i<userVoteData.length; i++) {
         for(var key in userEventData) {
-          // userEventData[key].votes = 0;
           if(userVoteData[i].prizeID === userEventData[key].id) {            
-            votesUsed += 1;
-            if(!userEventData[key].votes) {          
-              userEventData[key].votes = 1;
-            } else {              
-              userEventData[key].votes += 1;
-            }
+            userEventData[key].votes = userVoteData[i].votes;
           }
         }
       }
@@ -92,13 +97,28 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
       return userEventData;
     }
 
+    userEventService.changesMadeInit = function(changes) {
+      if(!(changes.length === 0)) {
+        for(var i = 0; i<changes.length; i++) {
+          var objChange = {
+            prizeID: changes[i].prizeID,
+            votes: changes[i].votes
+          }
+          voteChanges.push(objChange)
+        }
+      } else {
+        console.log('changes.length = 0')
+      }
+    }
+
     userEventService.changesMade = function(newChange, changeType) {
+      console.log('begin: ' + voteChanges)
       var createNew = true;
       if(changeType === 'add') {
         if(voteChanges.length === 0){
           var objChange = {
             prizeID: newChange[0].prizeID,
-            voteCount: 1
+            votes: 1
           }
           voteChanges.push(objChange);
           newChange.shift();
@@ -108,7 +128,7 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
         } else if(newChange.length === 1) {
           for(var j=0; j<vCL; j++) {
             if(voteChanges[j].prizeID === newChange[0].prizeID) {
-              voteChanges[j].voteCount++;
+              voteChanges[j].votes++;
               createNew = false;
               break;
             };
@@ -116,7 +136,7 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
           if(createNew) {
             var objChange = {
               prizeID: newChange[0].prizeID,
-              voteCount: 1
+              votes: 1
             }
             voteChanges.push(objChange)
           } 
@@ -124,11 +144,11 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
             for(var i=0; i<newChange.length; i++) {
               for(var j=0; j<vCL; j++) {
                 if(voteChanges[j].prizeID === newChange[i].prizeID) {
-                  voteChanges[j].voteCount++;
+                  voteChanges[j].votes++;
                } else {
                 var objChange = {
                   prizeID: newChange[i].prizeID,
-                  voteCount: 1
+                  votes: 1
                 }
                 voteChanges.push(objChange)
               }
@@ -141,7 +161,7 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
             } else if(newChange.length === 1) {
               for(var j=0; j<vCL; j++) {
                 if(voteChanges[j].prizeID === newChange[0].prizeID) {
-                  voteChanges[j].voteCount--;
+                  voteChanges[j].votes--;
                   break;
                 }
               }  
@@ -149,7 +169,7 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
                 for(var i=0; i<newChange.length; i++) {
                   for(var j=0; j<vCL; j++) {
                     if(voteChanges[j].prizeID === newChange[i].prizeID) {
-                      voteChanges[j].voteCount--;
+                      voteChanges[j].votes--;
                     }
                   } 
                 }
@@ -164,7 +184,7 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
     }
 
     userEventService.votesRemaining = function() {
-      return maxVotes - votesRemaining;
+      return votesRemaining;
     }
 
     userEventService.addVote = function(prizeData) {
@@ -186,7 +206,6 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
 
     userEventService.minusVote = function(prizeData) {
       if((maxVotes - votesRemaining) === 0) {
-        console.log('all votes remain')
         return false;
       } else {
         votesUsed--;
@@ -199,6 +218,24 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
         userEventService.changesMade(tempArr, 'minus')
         return true
       }
+    }
+
+    userEventService.submitUpdates = function() {
+      console.log('voteChanges: ' + JSON.stringify(voteChanges))
+      var userId = $cookieStore.get('userID');
+      var deferred = $q.defer();
+      $http({
+          method: 'POST',
+          url: 'http://localhost:12000/eventUser/submit/' + userId,
+          data: voteChanges
+        }).success(function(res) {
+          voteChanges.splice(0,voteChanges.length);
+          deferred.resolve(res);
+        }).
+          error(function(res) {
+            deferred.reject();
+            });
+      return deferred.promise
     }
 
     return userEventService;

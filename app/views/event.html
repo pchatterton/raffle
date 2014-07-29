@@ -1,8 +1,10 @@
 <div class='user-event-no-prizes' ng-hide="multPrizes">There are currently no prizes available. Please check again soon.</div>
 <div class="user-event-wrapper" ng-show="multPrizes">
 	<div class="user-event-instructions">
-		<h2>{{eventInfo.eventName}}</h2>
-		Below are the available prizes for your upcoming event, EVENT NAME HERE. You have NUM VOTES reminaing, so choose wisely. You can place all your votes on one prize, or spread them out across multiple prizes. Click the <span class="glyphicon glyphicon-arrow-up"> or <span class="glyphicon glyphicon-arrow-down"> sign to add or remove your vote.
+		<!-- <h2>{{eventInfo.eventName}}</h2> -->
+		<p>Below are the available prizes for your upcoming event, EVENT NAME HERE. You can place all your votes on one prize, or spread them out across multiple prizes.</p> 
+		<p>Click the arrows to add or remove your vote.</p>
+		<button>SUBMIT</button>
 	</div>
 	<div class="user-event-prizes" ng-repeat="prize in prizes">
 		<div class="prize-selection-wrapper">
@@ -12,9 +14,9 @@
 				<p>{{prize.prizeDescription}}</P>
 			</div>
 			<div class="prize-votes">
-				<div class="prize-plus-vote" ng-click="addVote(prize)"><span class="glyphicon glyphicon-arrow-up"></span></div>
+				<div class="prize-plus-vote" ng-click="addVote(prize)"><span class="glyphicon glyphicon-arrow-up" ng-hide="remVotes === 0"></span></div>
 				<div class="prize-vote-val">{{prize.votes}}</div>
-				<div class="prize-minus-vote" ng-click="minusVote(prize)"><span class="glyphicon glyphicon-arrow-down"></span></div>
+				<div class="prize-minus-vote" ng-click="minusVote(prize)"><span class="glyphicon glyphicon-arrow-down" ng-hide="prize.votes === 0"></span></div>
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -23,5 +25,5 @@
 <div class='clear'></div>
 <div class="user-event-botmenu">
 	<p>Remaining votes: {{remVotes}}</p>
-	<button>Save</button>
+	<button ng-click="submitUpdates()">SUBMIT</button>
 </div>

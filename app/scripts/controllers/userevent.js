@@ -23,7 +23,7 @@ app.controller('userEventCtrl', function ($scope, userEvent) {
 
 		userEvent.getUserVotes()
 			.then(function(votes) {
-				console.log('votes: ' + JSON.stringify(votes))
+				eventInfo();
 			})
 
 	}
@@ -44,13 +44,19 @@ app.controller('userEventCtrl', function ($scope, userEvent) {
 		var res = userEvent.addVote(prizeData)
 		if(res) {
 			prizeData.votes++;
+			remainingVotes();
 		}
 	}
 
 	$scope.minusVote = function(prizeData) {
-		var res = userEvent.minusVote(prizeData)
+		if(prizeData.votes === 0) {
+			console.log('its zero!')
+		} else {
+			var res = userEvent.minusVote(prizeData)
 			if(res) {
 				prizeData.votes--;
+				remainingVotes();
+			}
 		}
 	}
 
@@ -66,9 +72,15 @@ app.controller('userEventCtrl', function ($scope, userEvent) {
 		$scope.remVotes = userEvent.votesRemaining();
 	}
 
+	$scope.submitUpdates = function() {
+		userEvent.submitUpdates()
+			.then(function(data) {
+				console.log('submit update worked!')
+			})
+	}
+
 	//run initial functions
 	getEventData();
 	getUserVotes();
-	eventInfo();
 
   });

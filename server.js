@@ -104,5 +104,4 @@ app.get('/event/prize/:evID', prize.getPrizeInfo)
 
 // ADD OR REMOVE VOTES
 app.get('/getVotes/:uID', vote.getVotes)
-app.post('/eventUser.addVote', vote.addVote)
-app.post('/eventUser.removeVote', vote.removeVote)
+app.post('/eventUser/submit/:uID', vote.submitUpdate)

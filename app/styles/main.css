@@ -728,14 +728,43 @@ background-color: #ecf3f9;
 
 /*USER EVENT PRIZES PAGE STYLES*/
 .user-event-prizes {
-  width: 300px;
-  height: 320px;
+  width: 280px;
+  height: 360px;
   float: left;
-  background-color: white;
-  margin: 10px 10px 10px 10px;
+  background-color: #f6f6f6;
+  margin: 20px 26px 20px 26px;
   text-align: center;
   padding-top: 20px;
   position: relative;
+  -webkit-box-shadow: 3px 3px 9px 0px #293642;
+  -moz-box-shadow: 3px 3px 9px 0px #293642;
+  box-shadow: 3px 3px 9px 0px #293642;
+}
+
+.user-event-instructions {
+  width: 945px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-event-instructions p {
+  line-height: 30px;
+
+}
+
+.user-event-prizes .prize-info h2 {
+  color: #81A7CF;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+}
+
+.user-event-prizes .prize-info p {
+  color: #81A7CF;
+}
+
+span.glyphicon-arrow-up, span.glyphicon-arrow-down {
+  color: #81A7CF;
 }
 
 .prize-votes {
@@ -745,22 +774,27 @@ background-color: #ecf3f9;
 
 .prize-minus-vote {
   width: 30px;
-  margin-left: 20px;
+  min-height: 1px;
+  margin-right: 20px;
   float: right;
   font-size: 2.0rem;
 }
 
 .prize-vote-val {
   float: left;
-  width: 200px;
+  width: 180px;
+  color: #81A7CF;
+  font-size: 2.0rem;
 }
 
 .prize-plus-vote {
   width: 30px;
-  margin-right: 20px;
+  margin-left: 20px;
   float: left;
   font-size: 2.0rem;
+  min-height: 1px;
 }
+
 
 /* ANIMATIONS
 ============================================================================= */
