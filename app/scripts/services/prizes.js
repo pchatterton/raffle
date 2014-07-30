@@ -81,5 +81,24 @@ app.factory('Prizes', function Event($http, $q, $cookieStore, $upload, Event, $l
 
     }
 
+    // prizeService.updateStatus(prize) {
+    //   var deferred = $q.defer();
+    //   $http({
+    //       method: 'PUT',
+    //       url: 'http://localhost:12000/event/prize.updateStatus',
+    //       data: {
+    //         id: prize.id,
+    //         status: 
+    //       }
+    //     }).success(function(res) {
+    //       prizeService.addPrizeData(res)
+    //       deferred.resolve(res);
+    //     }).
+    //       error(function(res) {
+    //         deferred.resolve
+    //       });
+    //   return deferred.promise
+    // }
+
     return prizeService;
 }); //close factory

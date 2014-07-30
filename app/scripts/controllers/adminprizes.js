@@ -4,10 +4,8 @@ var app = angular.module('rafflePrizeApp');
 
 app.controller('AdminprizesCtrl', function ($scope, $q, $cookieStore, Prizes) {
 
-  $scope.prizesRcol = true;
-
+  $scope.prizesRcol = false;
   $scope.statusFilter = {status: 1};
-
   $scope.prizeButton = "enabled";
 
   var getInitPrizeData = function() {
@@ -20,33 +18,22 @@ app.controller('AdminprizesCtrl', function ($scope, $q, $cookieStore, Prizes) {
 
   var fileArr = [];
 
-  console.log('prizes page load')
-  console.log(fileArr)
-
   $scope.onFileSelect = function($files) {
-      //$files: an array of files selected, each file has name, size, and type.
       fileArr = $files;
   };
 
   $scope.submitPrize = function(prizeData) {
     Prizes.createPrize(fileArr, prizeData)
-    console.log('response: ')
     fileArr = [];
     $scope.prizesRcol = true;
   }
 
   $scope.displayPrizes = function(selPrize) {
-    console.log('selPrize' + selPrize)
     $scope.prizesRcol = true;
     $scope.myPrize = selPrize;
   }
 
-  $scope.updatePrizes = function() {
-    console.log('update events')
-  }
-
   $scope.addNewPrize = function() {
-    console.log('addNewPrize')
     $scope.prizesRcol = false;
   }
 
@@ -58,4 +45,12 @@ app.controller('AdminprizesCtrl', function ($scope, $q, $cookieStore, Prizes) {
       $scope.prizes = res;
     })
   });
+
+  // $scope.disablePrize() = function(prize) {
+  //   console.log('prize: ' + prize)
+  //   // Prizes.updateStatus(prize).then(function(res) {
+
+  //   // })
+  // }
+
 });

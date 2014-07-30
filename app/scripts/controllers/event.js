@@ -2,8 +2,7 @@
 
 var app = angular.module('rafflePrizeApp');
 
-app.controller('EventCtrl', function ($scope, Event, $location, $cookieStore) {
-
+app.controller('EventCtrl', function ($scope, Event, $location, $cookieStore, $state) {
   //Set the show hide depending on zero events
   $scope.showEvents = true
   $scope.zeroEvents = false;
@@ -12,6 +11,7 @@ app.controller('EventCtrl', function ($scope, Event, $location, $cookieStore) {
 
   var refreshData = function () {
     var events = Event.refreshEventInfo();
+
     if(events.length === 0) {
       $scope.showEvents = false
       $scope.zeroEvents = true;
@@ -22,7 +22,7 @@ app.controller('EventCtrl', function ($scope, Event, $location, $cookieStore) {
       Event.setEventId(events[0].id);
       $scope.showEvents = true;
       $scope.zeroEvents = false;
-      $location.path('admin/event/summary')
+      $state.go('admin.event.summary')
     }
   }
 
@@ -33,7 +33,6 @@ app.controller('EventCtrl', function ($scope, Event, $location, $cookieStore) {
   }
 
   getData()
-
 
   $scope.updateEventInfo = function(selEvent) {
     Event.setEventId($scope.myEvents.id);

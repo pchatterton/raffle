@@ -2,10 +2,19 @@
 
 var app = angular.module('rafflePrizeApp');
 
-app.controller('userEventCtrl', function ($scope, userEvent) {
+app.controller('userEventCtrl', function ($scope, userEvent, Authentication) {
 
 	//Checks to see if prizes are available
 	$scope.multPrizes = true;
+
+	$scope.userID = userEvent.getUserID();
+	$scope.saveBtn = true;
+
+	$scope.logout = function() {
+	    Authentication.logout();
+	    $scope.loginBtnVis = false;
+	    $scope.signupBtnVis = false;
+  }
 
 	//Retrieves the Prize data based off the event ID
 	var getEventData = function() {
@@ -36,13 +45,13 @@ app.controller('userEventCtrl', function ($scope, userEvent) {
 	}
 
 	var setEventData = function(data) {
-		console.log('setEventData: '+ JSON.stringify(data))
 		$scope.prizes = data;
 	}
 
 	$scope.addVote = function(prizeData) {
 		var res = userEvent.addVote(prizeData)
 		if(res) {
+			$scope.saveBtn = true;
 			prizeData.votes++;
 			remainingVotes();
 		}
@@ -50,10 +59,10 @@ app.controller('userEventCtrl', function ($scope, userEvent) {
 
 	$scope.minusVote = function(prizeData) {
 		if(prizeData.votes === 0) {
-			console.log('its zero!')
 		} else {
 			var res = userEvent.minusVote(prizeData)
 			if(res) {
+				$scope.saveBtn = true;
 				prizeData.votes--;
 				remainingVotes();
 			}
@@ -75,7 +84,7 @@ app.controller('userEventCtrl', function ($scope, userEvent) {
 	$scope.submitUpdates = function() {
 		userEvent.submitUpdates()
 			.then(function(data) {
-				console.log('submit update worked!')
+				$scope.saveBtn = false;		
 			})
 	}
 

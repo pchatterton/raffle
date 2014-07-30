@@ -26,10 +26,6 @@ app.factory('Event', function Event($http, $q, $location, $cookieStore) {
             return deferred.promise
         }
 
-      eventService.EventInfo = function() {
-
-      }
-
       eventService.refreshEventInfo = function() {
           return eventData;
       }
@@ -40,10 +36,6 @@ app.factory('Event', function Event($http, $q, $location, $cookieStore) {
 
       eventService.getEventId = function () {
         return selectedEventID
-      }
-
-      eventService.getEventbyID = function () {
-
       }
 
       eventService.createEventTemp = function(eventObj) {
@@ -79,6 +71,25 @@ app.factory('Event', function Event($http, $q, $location, $cookieStore) {
       eventService.getView = function () {
         return createView;
       }
+
+      eventService.updateStatus = function (status, eID) {
+        var deferred = $q.defer();
+        $http({
+          method: 'PUT',
+          url: 'http://localhost:12000/event.status',
+          data: {
+              id: eID,
+              status: status
+          }
+        }).success(function(res) {
+              deferred.resolve(res);
+            }).
+              error(function(res) {
+                deferred.resolve
+            });
+            return deferred.promise
+      }
+
 
       return eventService;
   });

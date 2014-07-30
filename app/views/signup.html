@@ -1,6 +1,6 @@
 <div class="admin-signup-container">
   <h2>Signup</h2>
-  <p class="details">Create an admin account for your future raffle events</p>
+  <p class="details">Create an admin account to set up future raffle events</p>
   <div class="admin-signup-frm">
     <p class="frm-label">First Name:</p>
     <input class="form-field" type="text" name="admin-firstName" ng-model="newAdmin.firstname">
@@ -13,7 +13,7 @@
     <input class="form-field" type="text" name="admin-password" ng-model="newAdmin.password">
     <p class="frm-label">Repeat Password:</p>
     <input class="form-field" type="text" name="admin-password-rpt" ng-model="pwRepeat">
-    {{formMessage}}
-    <input class="submit-button" type="submit" value="Submit" ng-click="createAdmin(newAdmin)">
+    <p>{{formMessage}}</p>
+    <button name="submit-button" ng-click="createAdmin(newAdmin)">Submit</button>
   </div>
 </div>

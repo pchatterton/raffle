@@ -5,16 +5,16 @@ var app = angular.module('rafflePrizeApp');
 app.controller('EventsummaryCtrl', function ($scope, $location, Event) {
 
 	$scope.enableEvent = function() {
-		console.log('enable')
-		$scope.myEvents.active = 1;
-		//update to server
+		if($scope.myEvents.active === 0) {
+			$scope.myEvents.active = 1;
+			Event.updateStatus(1, $scope.myEvents.id)
+		}
 	}
 
 	$scope.disableEvent = function() {
-		console.log('disable')
-		$scope.myEvents.active = 0;
-		//update to server
+		if($scope.myEvents.active === 1) {
+			$scope.myEvents.active = 0;
+			Event.updateStatus(0, $scope.myEvents.id)
+		}
 	}
-
-
   });

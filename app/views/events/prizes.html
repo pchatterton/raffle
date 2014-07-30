@@ -1,5 +1,5 @@
 <div class="admin-prizes-wrapper">
-    <h2>Prizes: {{myEvents.eventName}}</h2>
+    <h2>Prizes for {{myEvents.eventName}}</h2>
   <div class="admin-prizes-leftcol">
     <div class="prizes-list-wrapper">
       <h2>Current Prizes</h2>
@@ -9,7 +9,6 @@
         <button type="button" class="btn btn-default" ng-class="{active: prizeButton === 'disabled'}"  ng-click="statusFilter = {status: 0}; prizeButton = 'disabled'">Disabled</button>
         <button type="button" class="btn btn-default" ng-class="{active: prizeButton === 'all'}" ng-click="statusFilter = null; prizeButton = 'all'">All</button>
       </div>
-
       <div class="admin-prizes-list" ng-repeat="prize in prizes | filter:statusFilter"><!--NG REPEAT GOES HERE-->
         <div class='selectPrize'>
           <div class="admin-prize-name" ng-click="displayPrizes(prize)">
@@ -23,31 +22,32 @@
       </div><!--admin-prizes-list-->
     </div><!--prizes-list-wrapper-->
     <div class="add-new-prize">
-      <p ng-click="addNewPrize()">Add new prize...</p>
+      <p ng-click="addNewPrize()" ng-show="prizesRcol">Add new prize...</p>
     </div>
   </div><!--.admin-prizes-leftcol-->
   <div class="admin-prizes-rightcol">
     <div class="new-prize-form-wrapper" ng-hide="prizesRcol">
       <div class="new-prize-form">
+        <h3>Create New Prize</h3>
         <div class="file-drop" ng-file-drop="onFileSelect($files, newPrize)" ng-file-drag-over-class="optional-css-class-name-or-function"
           ng-show="dropSupported">Drop Files </br> Here</div>
-          <p>Or</p>
-          <input type="file" ng-file-select="onFileSelect($files)" >
+          <p>Or
+          <span><input type="file" ng-file-select="onFileSelect($files)" ></span></p>
         <div ng-file-drop-available="dropSupported=true"
           ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
-        <p>Prize Name</p>
+        <p class="frm-label">Prize Name</p>
         <input type="text" name="prize-name" ng-model="newPrize.name">
-        <p>Prize Description</p>
+        <p class="frm-label">Prize Description</p>
         <input type="text" name="prize-description" ng-model="newPrize.description">
-        <p>Status</p>
-        <input type="radio" ng-model="newPrize.status" value="enabled">Enabled<br/>
-        <input type="radio" ng-model="newPrize.status" ng-value="disabled">Disabled<br/>
+        <p class="frm-label">Status:</p>
+        <input type="radio" ng-model="newPrize.status" value="enabled">Enabled
+        <input type="radio" ng-model="newPrize.status" ng-value="disabled">Disabled
         <button name="newPrizebtn" ng-click="submitPrize(newPrize)">Create Prize</button>
       </div>
     </div>
     <div class="selected-prize" ng-show="prizesRcol">
       <div class="selected-prize-image">
-        <img src={{myPrize.prizeUrl}} alt="" / width="250">
+        <img ng-src="{{myPrize.prizeUrl}}" alt="" / width="250">
       </div>
       <h2>{{myPrize.prizeName}}</h2>
       <p>{{myPrize.prizeDescription}}</p>

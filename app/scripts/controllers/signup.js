@@ -2,7 +2,7 @@
 
 var app = angular.module('rafflePrizeApp');
 
-app.controller('SignupCtrl', function ($scope, Signup, $location, Authentication) {
+app.controller('SignupCtrl', function ($scope, Signup, $location, Authentication, $state, $rootScope) {
 
   var change = 'signup';
   $scope.$emit('updateMainBtn', change);
@@ -22,10 +22,11 @@ app.controller('SignupCtrl', function ($scope, Signup, $location, Authentication
     $scope.createAdmin = function(admin_details) {
       Signup.createAdmin(admin_details).then(function(res) {
         if(res) {
-          refreshForm();
           var setCookies = Authentication.adminCookiesSetup(res.user)
           if(setCookies) {
-            $location.path('admin/event/summary')
+            refreshForm();
+            $rootScope.loggedIn = true;
+            $state.go('admin.event.summary')
           } else {
             $scope.formMessage = "There was an error. Please try again"
           }

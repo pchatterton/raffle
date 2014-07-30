@@ -41,9 +41,9 @@ app.controller('LoginCtrl', function ($scope, $location, $cookieStore, Login, Au
     // }
     Login.loginAdmin(creds).then(function(res) {
       if(res.loginStatus) {
-        refreshAdminForm()
         var setCookies = Authentication.adminCookiesSetup(res.user)
         if(setCookies) {
+          refreshAdminForm()
           $rootScope.loggedIn = true;
           $state.go('admin.event.summary')
         } else {

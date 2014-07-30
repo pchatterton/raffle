@@ -38,7 +38,6 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
           method: 'GET',
           url: 'http://localhost:12000/getVotes/' + userId
         }).success(function(res) {
-          console.log('getUserVotes: ' + JSON.stringify(res));
             userVoteData = res;
             userEventService.combinePrizeVotes();
             userEventService.countPrizeVotes(res);
@@ -72,7 +71,6 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
           }
         }
       }
-      console.log('userVoteData: ' + JSON.stringify(userEventData))
     }
 
     userEventService.getEventInfo = function() {
@@ -107,12 +105,10 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
           voteChanges.push(objChange)
         }
       } else {
-        console.log('changes.length = 0')
       }
     }
 
     userEventService.changesMade = function(newChange, changeType) {
-      console.log('begin: ' + voteChanges)
       var createNew = true;
       if(changeType === 'add') {
         if(voteChanges.length === 0){
@@ -175,7 +171,6 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
                 }
               }  
             }
-            console.log('final:' + JSON.stringify(voteChanges))
           }
 
     //Retrieves the updated EventData
@@ -189,7 +184,6 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
 
     userEventService.addVote = function(prizeData) {
       if((maxVotes - votesRemaining) === maxVotes) {
-        console.log('no votes remaining');
         return false;
       } else {
           votesUsed++;
@@ -221,7 +215,6 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
     }
 
     userEventService.submitUpdates = function() {
-      console.log('voteChanges: ' + JSON.stringify(voteChanges))
       var userId = $cookieStore.get('userID');
       var deferred = $q.defer();
       $http({
@@ -236,6 +229,11 @@ app.factory('userEvent', function ($http, $q, $cookieStore) {
             deferred.reject();
             });
       return deferred.promise
+    }
+
+    userEventService.getUserID = function() {
+      var id = $cookieStore.get('userID');
+      return id;
     }
 
     return userEventService;

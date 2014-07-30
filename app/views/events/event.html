@@ -10,13 +10,13 @@
           <li role="presentation" ng-repeat="event in eventNames"><a ng-click="updateEventInfo(event)">{{event.eventName}}</a></li>
         </ul>
       </div>
-      <p ui-sref="admin.event.createEvent"><a>New event...</a></p>
+      <p ui-sref="admin.event.createEvent"><a>Create new event...</a></p>
     </div>
     <div class="event-menu">
       <div class="btn-group-vertical">
         <button type="button" class="btn btn-default eventMenuFocus" ui-sref="admin.event.summary">Summary</button>
         <button type="button" class="btn btn-default" ui-sref="admin.event.prizes">Prizes</button>
-        <button type="button" class="btn btn-default">Registrants</button>
+        <button type="button" class="btn btn-default" ui-sref="admin.event.registrants">Registrants</button>
       </div>
     </div>
   </div><!--.event-left-column-->

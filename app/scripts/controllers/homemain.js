@@ -7,19 +7,7 @@ app.controller('homeMainCtrl', function ($scope, $cookieStore, Authentication, $
     $scope.loginBtnVis = false;
     $scope.signupBtnVis = false;
 
-    console.log('home' + $cookieStore.get('loggedIn'))
-
-
-
-    // $scope.$watch(function () { return Authentication.verifyLoggedIn(); },
-    //   function (value) {
-    //     $scope.loginBtnVis = value;
-    //     $scope.signupBtnVis = value;
-    //   }
-    // );
-
     $scope.$on('updateMainBtn', function(event, change) {
-      console.log('change: ' + change)
       if(change === 'login') {
         $scope.loginBtnVis = true;
         $scope.signupBtnVis = false;
@@ -35,11 +23,8 @@ app.controller('homeMainCtrl', function ($scope, $cookieStore, Authentication, $
   }
 
   $scope.$on('$locationChangeStart', function(event, next, current) {
-    console.log('$locationChangeStart')
     if(next.indexOf('admin') !== -1) {
-      console.log('admin in url')
       if(!$cookieStore.get('loggedIn')) {
-        console.log('ugh: ' + $cookieStore.get('loggedIn'))
         $state.go('login');
       }
     }
@@ -109,6 +94,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: '/prizes',
         templateUrl: 'views/events/prizes.html',
         controller: 'AdminprizesCtrl',
+      })
+      .state('admin.event.registrants', {
+        url: '/registrants',
+        templateUrl: 'views/events/registrants.html',
+        controller: 'RegistrantsCtrl'
       })
 // End of app.config ===========================================================
   });

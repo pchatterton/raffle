@@ -1,10 +1,18 @@
 <div class='user-event-no-prizes' ng-hide="multPrizes">There are currently no prizes available. Please check again soon.</div>
 <div class="user-event-wrapper" ng-show="multPrizes">
+	<div class="user-event-top-menu" ui-scrollfix="+50">
+		<ul>
+			<li class="event-name">{{eventInfo.eventName}}</li>
+			<li>ID: {{userID}}</li>
+			<li class="remaining-votes" ng-class="{warning: remVotes === 0}">Remaining Votes: {{remVotes}}</li>
+			<li class="user-prize-btn" ng-click="submitUpdates()" ng-show="saveBtn">Save</li>
+			<li class="changes-recorded" ng-hide="saveBtn">Changes Recorded</li>
+			<li class="logout"  ng-click="logout()">Logout</li>
+		</ul>
+	</div>
 	<div class="user-event-instructions">
 		<!-- <h2>{{eventInfo.eventName}}</h2> -->
-		<p>Below are the available prizes for your upcoming event, EVENT NAME HERE. You can place all your votes on one prize, or spread them out across multiple prizes.</p> 
-		<p>Click the arrows to add or remove your vote.</p>
-		<button>SUBMIT</button>
+		<p>Below are the available prizes for your upcoming event, EVENT NAME HERE. You can place all your votes on one prize, or spread them out across multiple prizes. Click the arrows to add or remove your vote.</p>
 	</div>
 	<div class="user-event-prizes" ng-repeat="prize in prizes">
 		<div class="prize-selection-wrapper">
@@ -25,5 +33,5 @@
 <div class='clear'></div>
 <div class="user-event-botmenu">
 	<p>Remaining votes: {{remVotes}}</p>
-	<button ng-click="submitUpdates()">SUBMIT</button>
+	<button class="user-prize-btn"  ng-click="submitUpdates()">Save</button>
 </div>

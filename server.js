@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
     res.setHeader('Connection', 'close')
     res.setHeader('Content-Type', 'application/json')
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS')
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next();
 })
@@ -101,6 +101,7 @@ app.get('/event/:evID', event.getEventInfo)
 app.post('/event.create', event.createNewEvent)
 app.post('/event/prize.create', prize.createNewPrize)
 app.get('/event/prize/:evID', prize.getPrizeInfo)
+app.put('/event.status', event.updateStatus)
 
 // ADD OR REMOVE VOTES
 app.get('/getVotes/:uID', vote.getVotes)

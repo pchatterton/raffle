@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('rafflePrizeApp');
-app.controller('EventcreateCtrl', function ($scope, Event, $location) {
+app.controller('EventcreateCtrl', function ($scope, Event, $location, $state) {
 
   var init = function () {
     var events = Event.refreshEventInfo();
@@ -38,7 +38,7 @@ app.controller('EventcreateCtrl', function ($scope, Event, $location) {
       refreshForm();
       Event.createEventTemp(events.eventData)
     })
-    $location.path('admin/event/summary')
+    $state.go('admin.event.summary')
   }
 
   });
