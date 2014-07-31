@@ -2,11 +2,12 @@
 
 var app = angular.module('rafflePrizeApp');
 
-app.factory('Registrants', function () {
+app.factory('Registrants', function Event($http, $q, $cookieStore, Event) {
 
    var registrantsService = {};
    var newRegistrants = [];
    var failedUpload = [];
+   // var uploadOjb = {};
 
 
     registrantsService.verifyText = function(text) {
@@ -26,6 +27,33 @@ app.factory('Registrants', function () {
     	}
     }
 
+    // registrantsService.convertObj = function() {
+    // 	for(var i=0; i<newRegistrants.length; i++) {
+    // 		uploadObj
+    // 	}
+    // }
+
+    registrantsService.postRegistrants = function() {
+    	console.log(newRegistrants)
+    	var eventId = Event.getEventId()    
+    	var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            url: 'http://localhost:12000/event/registrants/' + eventId,
+            data: {
+            	emails: newRegistrants
+            }
+       	}).success(function(res) {
+       			console.log('success')
+       			newRegistrants = [];
+       			failedUpload = []
+                deferred.resolve(res);
+            }).
+            	error(function(res) {
+                  deferred.resolve
+              	});
+        return deferred.promise
+    }
 
     registrantsService.getRegistrants = function() {
     	return newRegistrants;

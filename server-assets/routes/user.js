@@ -3,30 +3,35 @@ var passport = require('passport');
 require('../config/passport')
 var passport = require('passport-local').Strategy;
 
-exports.createUser = function(req, res) {
-//CHANGE TO USER FORM ADMIN EXAMPLE
-  // var adminData = req.body;
-  // var response = {
-  //   result: false,
-  //   message: '',
-  //   user: null
-  // };
-  // db.Admin.count({ where: {username: adminData.username}}).success(function(c) {
-  //   if(c > 0) {
-  //     response.message = "Username is already taken."
-  //   }
-  //   else {
-  //     db.Admin.create(adminData).success(function(user) {
-  //     req.login(user, function(err) {
-  //       if (err) { return next(err); }
-  //         response.result = true;
-  //         response.message = "You have successfully signed up in the raffle app."
-  //       });
-  //         response.user = user;
-  //         res.send(response)
-  //     })
-  //   }
-// })
+exports.uploadRegistrants = function(req, res) {
+  var emails = req.body.emails
+
+  for(var i=0; i<emails.length; i++) {
+    db.User.create({
+      email: emails[i],
+      EventID: req.params.evID,
+      role: 'user'
+    }).success(function(user) {
+      console.log('successfully created' + user.email)
+    })  
+  }
+  res.send({})
+}
+
+exports.getRegistrants = function(req, res) {
+  var response = {
+    success: false,
+    message: '',
+    eventData: null
+  };
+  db.User.findAll({
+    where: {eventID: req.params.evID}
+  }).success(function(eventData) {
+    response.success = true;
+    response.message = "Successfully retrieved data";
+    response.eventData = eventData;
+    res.send(response)
+  })
 }
 
 exports.userLogin = function(req, res) {

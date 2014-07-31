@@ -95,6 +95,8 @@ app.post('/login.admin', function(req, res, next) {
 app.post('/login.user', user.userLogin)
 app.get('/eventUser/:evID', user.getUserPrizeData)
 app.get('/eventUser/data/:evID', user.getEventData)
+app.post('/event/registrants/:evID', user.uploadRegistrants)
+app.get('/event/registrants/:evID', user.getRegistrants)
 
 // EVENT PAGE ROUTES ================================
 app.get('/event/:evID', event.getEventInfo)

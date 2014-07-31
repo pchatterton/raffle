@@ -1078,6 +1078,16 @@ span.glyphicon-arrow-up, span.glyphicon-arrow-down {
   color: #A80816;
 }
 
+.registrants-wrapper h2 {
+  font-size: 3.0rem;
+  color: #428bca;
+  width: 90%;
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+
+
 
 /* ANIMATIONS
 ============================================================================= */
