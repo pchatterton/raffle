@@ -2,18 +2,39 @@
   <h2>Signup</h2>
   <p class="details">Create an admin account to set up future raffle events</p>
   <div class="admin-signup-frm">
-    <p class="frm-label">First Name:</p>
-    <input class="form-field" type="text" name="admin-firstName" ng-model="newAdmin.firstname">
-    <p class="frm-label">Last Name:</p>
-    <input class="form-field" type="text" name="admin-lastName" ng-model="newAdmin.lastname">
-    <p class="frm-label">Username:</p>
-    <input class="form-field" type="text" name="admin-username" ng-model="newAdmin.username" ng-blur='validateUserName()'>
-    {{validateMsg}}
-    <p class="frm-label">Password:</p>
-    <input class="form-field" type="text" name="admin-password" ng-model="newAdmin.password">
-    <p class="frm-label">Repeat Password:</p>
-    <input class="form-field" type="text" name="admin-password-rpt" ng-model="pwRepeat">
-    <p>{{formMessage}}</p>
-    <button name="submit-button" ng-click="createAdmin(newAdmin)">Submit</button>
+    <form name='signupForm' ng-submit='createAdmin(newAdmin)' novalidate>
+      
+      <!--First Name-->
+      <div class='form-group' ng-class="{ 'has-error' : signupForm.firstname.$invalid && !signupForm.firstname.$pristine}">
+        <p class="frm-label">First Name:</p>
+        <input class="form-field" type="text" name="firstname" ng-model="newAdmin.firstname" required><span ng-show="signupForm.firstname.$invalid && !signupForm.firstname.$pristine">First name is required.</span>
+      </div>
+
+
+      <!--Last Name-->
+      <div class='form-group' ng-class="{ 'has-error' : signupForm.lastname.$invalid && !signupForm.lastname.$pristine}">
+        <p class="frm-label">Last Name:</p>
+        <input class="form-field" type="text" name="lastname" ng-model="newAdmin.lastname" required><span ng-show="signupForm.lastname.$invalid && !signupForm.lastname.$pristine">Last name is required.</span>
+      </div>
+
+      <!--Username-->
+      <div class='form-group'>
+        <p class="frm-label">Username:</p>
+        <input class="form-field" type="text" name="username" ng-model="newAdmin.username"  ng-blur='validateUserName()' required>{{validateMsg}}
+      </div>
+
+      <!--Password-->
+      <div class='form-group' ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine}">
+        <p class="frm-label">Password:</p>
+        <input class="form-field" type="password" name="password" ng-model="newAdmin.password" required><span ng-show="signupForm.password.$invalid && !signupForm.password.$pristine">Password is required.</span>
+      </div>
+
+      <!--Password Repeat-->
+      <div class='form-group' ng-class="{ 'has-error' : signupForm.passwordRpt.$invalid && !signupForm.passwordRpt.$pristine}">
+        <p class="frm-label">Repeat Password:</p>
+        <input class="form-field" type="password" name="passwordRpt" ng-model="newAdmin.passwordRpt" required><span ng-show="signupForm.passwordRpt.$invalid && !signupForm.passwordRpt.$pristine">Password repeat is required.</span><!-- <span ng-show="newAdmin.password !== newAdmin.passwordRpt">Passwords don't match</span> -->
+      </div>
+      <button type='submit' ng-disabled='signupForm.$invalid'>Submit</button>
+    </form>
   </div>
 </div>

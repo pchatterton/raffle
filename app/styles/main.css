@@ -338,7 +338,7 @@ li.signup-btn a:hover{
 
 .admin-signup-container {
   width: 600px;
-  height: 460px;
+  height: 490px;
   background-color: #f6f6f6;
   margin: 50px auto 0 auto;
   padding: 20px;
@@ -884,7 +884,7 @@ background-color: #ecf3f9;
 }
 
 .admin-prizes-wrapper .selected-prize-image {
-  height: 250px;
+  min-height: 250px;
 }
 
 .admin-prizes-wrapper .selected-prize img {
@@ -935,6 +935,12 @@ background-color: #ecf3f9;
 .user-event-instructions p {
   line-height: 30px;
 
+}
+
+.user-event-prizes .prize-info {
+  position: absolute;
+  bottom: 50px;
+  left: 15px;
 }
 
 .user-event-prizes .prize-info h2 {
