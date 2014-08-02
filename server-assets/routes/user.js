@@ -12,24 +12,25 @@ exports.uploadRegistrants = function(req, res) {
       EventID: req.params.evID,
       role: 'user'
     }).success(function(user) {
-      console.log('successfully created' + user.email)
     })  
   }
   res.send({})
 }
 
 exports.getRegistrants = function(req, res) {
+  console.log('getRegistrants function')
   var response = {
     success: false,
     message: '',
-    eventData: null
+    registrantData: null
   };
   db.User.findAll({
     where: {eventID: req.params.evID}
-  }).success(function(eventData) {
+  }).success(function(data) {
     response.success = true;
     response.message = "Successfully retrieved data";
-    response.eventData = eventData;
+    response.registrantData = data;
+    console.log('data' + data)
     res.send(response)
   })
 }

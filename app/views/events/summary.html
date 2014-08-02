@@ -20,6 +20,9 @@
   </div>
   <div class="event-summary-registrants section">
     <h2>Registrants</h2>
+    <ul ng-repeat="registrant in registrants">
+      <li>{{registrant.email}}</li>
+    </ul>
   </div>
   <div class="event-summary-stats section">
     <h2>Stats</h2>

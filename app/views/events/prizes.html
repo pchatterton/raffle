@@ -29,10 +29,10 @@
     <div class="new-prize-form-wrapper" ng-hide="prizesRcol">
       <div class="new-prize-form">
         <h3>Create New Prize</h3>
-        <div class="file-drop" ng-file-drop="onFileSelect($files, newPrize)" ng-file-drag-over-class="optional-css-class-name-or-function"
-          ng-show="dropSupported">Drop Files </br> Here</div>
-          <p>Or
-          <span><input type="file" ng-file-select="onFileSelect($files)" ></span></p>
+        <div class="file-drop" ng-file-drop="onFileSelect($files); changeDropSpans()" ng-file-drag-over-class="optional-css-class-name-or-function"
+          ng-show="dropSupported"><span ng-show='dropSpan'>Drop Files </br> Here</span><span ng-hide='dropSpan'>{{dropFile}}</span></div>
+          <p class='or'>Or</p>
+          <p class='or-choose-file'><span><input type="file" ng-file-select="onFileSelect($files)" ></span></p>
         <div ng-file-drop-available="dropSupported=true"
           ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
         <p class="frm-label">Prize Name</p>

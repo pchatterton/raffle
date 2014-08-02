@@ -7,7 +7,6 @@ app.factory('Registrants', function Event($http, $q, $cookieStore, Event) {
    var registrantsService = {};
    var newRegistrants = [];
    var failedUpload = [];
-   // var uploadOjb = {};
 
 
     registrantsService.verifyText = function(text) {
@@ -27,11 +26,22 @@ app.factory('Registrants', function Event($http, $q, $cookieStore, Event) {
     	}
     }
 
-    // registrantsService.convertObj = function() {
-    // 	for(var i=0; i<newRegistrants.length; i++) {
-    // 		uploadObj
-    // 	}
-    // }
+    registrantsService.getCurrentRegistrants = function() {
+    	console.log('step2')
+    	var eventId = Event.getEventId()
+    	console.log('id' + eventId) 
+    	var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: 'http://localhost:12000/event/registrants/' + 1
+       	}).success(function(res) {
+                deferred.resolve(res);
+            }).
+            	error(function(res) {
+                  deferred.resolve
+              	});
+        return deferred.promise
+    }
 
     registrantsService.postRegistrants = function() {
     	console.log(newRegistrants)
@@ -44,7 +54,6 @@ app.factory('Registrants', function Event($http, $q, $cookieStore, Event) {
             	emails: newRegistrants
             }
        	}).success(function(res) {
-       			console.log('success')
        			newRegistrants = [];
        			failedUpload = []
                 deferred.resolve(res);

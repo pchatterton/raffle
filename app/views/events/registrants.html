@@ -1,8 +1,18 @@
 <div class="registrants-wrapper">
 	<h2>Registrants for {{myEvents.eventName}}</h2>
-	<div class="upload-registrants-wrapper">
+	<div class='registrants-info' ng-hide="uploadRegistrantsView">
+		<div class='registrants-current'>
+			<h3>Current Registrants:</h3>
+			<ul ng-repeat="currentRegistrant in currentRegistrants">
+				<li>{{currentRegistrant.email}}</li>
+			</ul>
+		</div>
+		<p class='show-upload-btn' ng-click='showUploadBtn()'>Upload registrants...</p>
+	</div>
+	<div class="upload-registrants-wrapper" ng-show="uploadRegistrantsView">
 		<div class="uploadRegistrants">
-			<textarea ng-model="registrantEmails" style="width:300px;height:350px;resize:none;"></textarea>
+			<p>Insert email addresses of registrants in the text box below. Email addresses should be separated by a semicolon (;).</p>
+			<textarea ng-model="registrantEmails" style="width:300px;height:250px;resize:none;"></textarea>
 			<button ng-click="uploadEmails(registrantEmails)">Upload</button>
 		</div>
 		<div class='uploadResults' ng-show="postUpload">
@@ -16,7 +26,10 @@
 					<li>{{failedEmail}}</li>
 				</ul>
 			</div>
+			<div class='clear'></div>
 		</div>
+		<p ng-click='finishRegistrantUpload()' ng-show='showCancel'>Cancel</p>
+		<p ng-click='finishRegistrantUpload()' ng-hide='showCancel'>OK</p>
 	</div>
 	<div class='viewRegistrants'>
 

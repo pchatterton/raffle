@@ -7,6 +7,7 @@ app.controller('AdminprizesCtrl', function ($scope, $q, $cookieStore, Prizes) {
   $scope.prizesRcol = false;
   $scope.statusFilter = {status: 1};
   $scope.prizeButton = "enabled";
+  $scope.dropSpan = true;
 
   var getInitPrizeData = function() {
     Prizes.getInitPrizeData().then(function(res) {
@@ -22,6 +23,11 @@ app.controller('AdminprizesCtrl', function ($scope, $q, $cookieStore, Prizes) {
       fileArr = $files;
   };
 
+  $scope.changeDropSpans = function() {
+    $scope.dropSpan = false;
+    $scope.dropFile = fileArr[0].name;
+  }
+
   $scope.submitPrize = function(prizeData) {
     Prizes.createPrize(fileArr, prizeData)
     fileArr = [];
@@ -35,6 +41,8 @@ app.controller('AdminprizesCtrl', function ($scope, $q, $cookieStore, Prizes) {
 
   $scope.addNewPrize = function() {
     $scope.prizesRcol = false;
+    fileArr = [];
+    $scope.dropSpan = true;
   }
 
   $scope.$on('udpateEventID', function(event, mass) {
